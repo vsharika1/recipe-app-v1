@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+header {
+  margin: auto -16px;
+  padding: 16px 32px;
+  height: 80px;
+  color: white;
+  background-color: #99bc85;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.col-recipe-form {
+  background-color: #e1f0da;
+}
+.new-recipe-form {
+  height: calc(100vh - 80px);
+}
+.new-recipe-form-card {
+  width: 40vw;
+  min-width: 10vw;
+  min-height: 50vh;
+  max-height: 75vh;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+.col-recipe-list {
+  background-color: #d4e7c5;
+}
+.saved-recipe {
+  width: 40vw;
+  min-height: 75vh;
+  overflow-y: auto;
+  max-height: 75vh;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}

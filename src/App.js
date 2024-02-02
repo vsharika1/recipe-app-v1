@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Header from './components/Header';
+import NewRecipeForm from './components/NewRecipeForm';
+import RecipeList from './components/RecipeList';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    const savedRecipes = JSON.parse(localStorage.getItem('recipes')) || [];
+    setRecipes(savedRecipes);
+  }, []);
+
+  const addNewRecipe = (recipe) => {
+    const newRecipes = [...recipes, recipe];
+    setRecipes(newRecipes);
+    localStorage.setItem('recipes', JSON.stringify(newRecipes));
+  };
+
+  const onDeleteRecipe = (index) => {
+    const updatedRecipes = recipes.filter((_, recipeIndex) => recipeIndex !== index);
+    setRecipes(updatedRecipes);
+    localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
+  };
+
+  const selectRecipe = (recipe) => {
+    // Here you could implement the logic to show the recipe details
+    alert(`Recipe Selected: ${recipe.recipeName}`);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-6 d-flex align-items-center justify-content-center col-recipe-form">
+            <NewRecipeForm onAddRecipe={addNewRecipe} />
+          </div>
+          <div className="col-md-6 d-flex align-items-center justify-content-center col-recipe-list">
+            <RecipeList recipes={recipes} onSelectRecipe={selectRecipe} onDeleteRecipe={onDeleteRecipe} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
