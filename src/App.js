@@ -24,11 +24,6 @@ function App() {
     localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
   };
 
-  const selectRecipe = (recipe) => {
-    // Here you could implement the logic to show the recipe details
-    alert(`Recipe Selected: ${recipe.recipeName}`);
-  };
-
   return (
     <div className="App">
       <Header />
@@ -38,7 +33,7 @@ function App() {
             <NewRecipeForm onAddRecipe={addNewRecipe} />
           </div>
           <div className="col-md-6 d-flex align-items-center justify-content-center col-recipe-list">
-            <RecipeList recipes={recipes} onSelectRecipe={selectRecipe} onDeleteRecipe={onDeleteRecipe} />
+            <RecipeList recipes={recipes} onDeleteRecipe={onDeleteRecipe} />
           </div>
         </div>
       </div>

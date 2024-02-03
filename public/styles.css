@@ -19,11 +19,12 @@ header {
 .new-recipe-form-card {
   width: 40vw;
   min-width: 10vw;
-  min-height: 50vh;
+  min-height: 75vh;
   max-height: 75vh;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
+  --bs-border-radius: 20px;
+  overflow-y: auto;
 }
 .col-recipe-list {
   background-color: #d4e7c5;
@@ -35,5 +36,33 @@ header {
   max-height: 75vh;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
+  --bs-border-radius: 20px;
+}
+#recipeName {
+  border-radius: 20px;
+}
+#ingredients {
+  height: 200px;
+  resize: none;
+  border-radius: 20px;
+}
+#directions {
+  height: 270px;
+  resize: none;
+  border-radius: 20px;
+}
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+}
+.modalTitle {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.modalContent {
+  line-height: 1.6;
+  font-size: 1rem;
 }

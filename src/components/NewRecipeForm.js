@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SaveIcon from "@mui/icons-material/Save";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 function NewRecipeForm({ onAddRecipe }) {
   const [recipeName, setRecipeName] = useState("");
@@ -23,51 +25,56 @@ function NewRecipeForm({ onAddRecipe }) {
         <div className="card-body">
           <h1 className="card-title text-right my-2">Add Recipe</h1>
           <form onSubmit={handleSubmit}>
-            <div className="my-3">
-              <label htmlFor="recipeName" className="form-label">
-                <strong>Recipe Name</strong>
-              </label>
+            <div className="form-floating my-3">
               <input
                 type="text"
                 className="form-control"
                 id="recipeName"
+                placeholder="Recipe Name"
                 value={recipeName}
                 onChange={(event) => setRecipeName(event.target.value)}
                 required
               />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="ingredients" className="form-label">
-                <strong>Ingredients</strong>
+              <label htmlFor="recipeName" className="form-label">
+                Recipe Name
               </label>
+            </div>
+            <div className="form-floating mb-3">
               <textarea
                 className="form-control"
                 id="ingredients"
-                rows="5"
+                placeholder="Ingredients"
                 value={ingredients}
                 onChange={(event) => setIngredients(event.target.value)}
                 required
               />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="directions" className="form-label">
-                <strong>Directions</strong>
+              <label htmlFor="ingredients" className="form-label">
+                Ingredients
               </label>
+            </div>
+            <div className="form-floating mb-3">
               <textarea
                 className="form-control"
                 id="directions"
-                rows="10"
+                placeholder="Directions"
                 value={directions}
                 onChange={(event) => setDirections(event.target.value)}
                 required
               />
+              <label htmlFor="directions" className="form-label">
+                Directions
+              </label>
             </div>
             <div className="text-center">
-              <button type="submit" className="btn btn-primary me-2">
-                Save
+              <button
+                type="button"
+                className="btn btn-secondary me-2"
+                onClick={resetForm}
+              >
+                <RestartAltIcon /> Reset
               </button>
-              <button type="button" className="btn btn-secondary" onClick={resetForm}>
-                Reset
+              <button type="submit" className="btn btn-primary">
+                <SaveIcon /> Save
               </button>
             </div>
           </form>
