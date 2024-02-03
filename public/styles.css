@@ -10,6 +10,9 @@ header {
   background-color: #99bc85;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
+h1 {
+  gap: 5px;
+}
 .col-recipe-form {
   background-color: #e1f0da;
 }
@@ -42,20 +45,21 @@ header {
   border-radius: 20px;
 }
 #ingredients {
-  height: 200px;
+  height: 250px;
   resize: none;
   border-radius: 20px;
 }
 #directions {
-  height: 270px;
+  height: 350px;
   resize: none;
   border-radius: 20px;
 }
-.closeButton {
+#closeButton {
   position: absolute;
   top: 8px;
   right: 8px;
-  z-index: 10;
+  background-color: transparent;
+  border: none;
 }
 .modalTitle {
   margin-bottom: 20px;
@@ -66,3 +70,18 @@ header {
   line-height: 1.6;
   font-size: 1rem;
 }
+#resetButton {
+  width: fit-content;
+  gap: 5px;
+}
+#submitButton {
+  width: fit-content;
+  gap: 5px;
+}
+#resetIcon {
+  font-size: 1rem;
+}
+#saveIcon {
+  font-size: 1rem;
+}
+

@@ -65,16 +65,24 @@ function NewRecipeForm({ onAddRecipe }) {
                 Directions
               </label>
             </div>
-            <div className="text-center">
+            <div
+              className="d-flex justify-content-center align-items-center"
+              style={{ gap: "10px" }}
+            >
               <button
                 type="button"
-                className="btn btn-secondary me-2"
+                id="resetButton"
+                className="btn btn-secondary d-flex align-items-center justify-content-center"
                 onClick={resetForm}
               >
-                <RestartAltIcon /> Reset
+                <RestartAltIcon id="resetIcon" /> Reset
               </button>
-              <button type="submit" className="btn btn-primary">
-                <SaveIcon /> Save
+              <button
+                type="submit"
+                id="submitButton"
+                className="btn btn-primary d-flex align-items-center justify-content-center"
+              >
+                <SaveIcon id="saveIcon" /> Save
               </button>
             </div>
           </form>

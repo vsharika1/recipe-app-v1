@@ -14,6 +14,7 @@ const modalStyle = {
   transform: "translate(-50%, -50%)",
   width: "90%",
   maxWidth: "600px",
+  maxHeight: "70vh",
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -31,7 +32,7 @@ const StyledDeleteButton = styled(Button)({
   borderRadius: "50%",
   color: "red",
   backgroundColor: "white",
-  display: "flex", 
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
   "&:hover": {
@@ -77,12 +78,12 @@ function RecipeList({ recipes, onDeleteRecipe }) {
                         <Typography variant="subtitle1" component="h2">
                           {recipe.recipeName}
                         </Typography>
-                          <StyledDeleteButton
-                            onClick={(event) => {
-                              handleDelete(event, index);
-                            }}
-                            startIcon={<DeleteIcon />}
-                          />
+                        <StyledDeleteButton
+                          onClick={(event) => {
+                            handleDelete(event, index);
+                          }}
+                          startIcon={<DeleteIcon />}
+                        />
                       </div>
                     </div>
                   </li>
@@ -100,20 +101,41 @@ function RecipeList({ recipes, onDeleteRecipe }) {
                       </Typography>
                       <Typography className="modalContent" sx={{ mt: 2 }}>
                         <strong>Ingredients:</strong>
-                        <p>{selectedRecipe?.ingredients}</p>
+                        <ul>
+                          {selectedRecipe?.ingredients
+                            .split(/,\s|\n/)
+                            .map((ingredient, index, array) => {
+                              if (ingredient) {
+                                return (
+                                  <li key={index}>
+                                    {ingredient.trim()}
+                                    {index < array.length - 1 ? "," : ""}
+                                  </li>
+                                );
+                              }
+                              return null;
+                            })}
+                        </ul>
                         <strong>Directions:</strong>
-                        <p>{selectedRecipe?.directions}</p>
+                        <ol>
+                          {selectedRecipe?.directions
+                            .split(/\. |\n/)
+                            .map((direction, index, array) => {
+                              if (direction) {
+                                return (
+                                  <li key={index}>
+                                    {direction.trim()}
+                                    {index < array.length - 1 ? "." : ""}
+                                  </li>
+                                );
+                              }
+                              return null;
+                            })}
+                        </ol>
                       </Typography>
                       <Button
                         onClick={handleClose}
-                        className="closeButton"
-                        style={{
-                          position: "absolute",
-                          top: "8px",
-                          right: "8px",
-                          backgroundColor: "transparent",
-                          border: "none",
-                        }}
+                        id="closeButton"
                       >
                         <CloseIcon />
                       </Button>
