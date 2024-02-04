@@ -7,17 +7,17 @@ function NewRecipeForm({ onAddRecipe }) {
   const [ingredients, setIngredients] = useState("");
   const [directions, setDirections] = useState("");
 
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
     onAddRecipe({ recipeName, ingredients, directions });
     resetForm();
-  };
+  }
 
-  const resetForm = () => {
+  function resetForm() {
     setRecipeName("");
     setIngredients("");
     setDirections("");
-  };
+  }
 
   return (
     <div className="d-flex justify-content-center align-items-center new-recipe-form">
@@ -67,7 +67,7 @@ function NewRecipeForm({ onAddRecipe }) {
             </div>
             <div
               className="d-flex justify-content-center align-items-center"
-              style={{ gap: "10px" }}
+              id="save-reset-btn-container"
             >
               <button
                 type="button"

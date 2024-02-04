@@ -12,17 +12,17 @@ function App() {
     setRecipes(savedRecipes);
   }, []);
 
-  const addNewRecipe = (recipe) => {
+  function addNewRecipe(recipe) {
     const newRecipes = [...recipes, recipe];
     setRecipes(newRecipes);
     localStorage.setItem('recipes', JSON.stringify(newRecipes));
-  };
+  }
 
-  const onDeleteRecipe = (index) => {
+  function onDeleteRecipe(index) {
     const updatedRecipes = recipes.filter((_, recipeIndex) => recipeIndex !== index);
     setRecipes(updatedRecipes);
     localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
-  };
+  }
 
   return (
     <div className="App">

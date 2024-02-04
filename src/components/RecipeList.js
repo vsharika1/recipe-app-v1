@@ -49,19 +49,19 @@ function RecipeList({ recipes, onDeleteRecipe }) {
   const [open, setOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  const handleOpen = (recipe) => {
+  function handleOpen(recipe) {
     setSelectedRecipe(recipe);
     setOpen(true);
-  };
+  }
 
-  const handleClose = () => {
+  function handleClose() {
     setOpen(false);
-  };
+  }
 
-  const handleDelete = (event, index) => {
+  function handleDelete(event, index) {
     event.stopPropagation();
     onDeleteRecipe(index);
-  };
+  }
 
   return (
     <div className="container h-100 d-flex justify-content-center align-items-center">
@@ -104,12 +104,11 @@ function RecipeList({ recipes, onDeleteRecipe }) {
                         <ul>
                           {selectedRecipe?.ingredients
                             .split(/,\s|\n/)
-                            .map((ingredient, index, array) => {
+                            .map((ingredient, index) => {
                               if (ingredient) {
                                 return (
                                   <li key={index}>
                                     {ingredient.trim()}
-                                    {index < array.length - 1 ? "," : ""}
                                   </li>
                                 );
                               }
@@ -120,12 +119,11 @@ function RecipeList({ recipes, onDeleteRecipe }) {
                         <ol>
                           {selectedRecipe?.directions
                             .split(/\. |\n/)
-                            .map((direction, index, array) => {
+                            .map((direction, index) => {
                               if (direction) {
                                 return (
                                   <li key={index}>
                                     {direction.trim()}
-                                    {index < array.length - 1 ? "." : ""}
                                   </li>
                                 );
                               }

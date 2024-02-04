@@ -13,6 +13,9 @@ header {
 h1 {
   gap: 5px;
 }
+#menuBookIcon {
+  font-size: 40px;
+}
 .col-recipe-form {
   background-color: #e1f0da;
 }
@@ -45,12 +48,12 @@ h1 {
   border-radius: 20px;
 }
 #ingredients {
-  height: 250px;
+  height: 20vh;
   resize: none;
   border-radius: 20px;
 }
 #directions {
-  height: 350px;
+  height: 30vh;
   resize: none;
   border-radius: 20px;
 }
@@ -70,6 +73,10 @@ h1 {
   line-height: 1.6;
   font-size: 1rem;
 }
+#save-reset-btn-container {
+  gap: 10px;
+  height: 3vh;
+}
 #resetButton {
   width: fit-content;
   gap: 5px;
@@ -84,4 +91,3 @@ h1 {
 #saveIcon {
   font-size: 1rem;
 }
-
