@@ -70,77 +70,80 @@ function RecipeList({ recipes, onDeleteRecipe }) {
           <div className="card my-4 saved-recipe">
             <div className="card-body">
               <h1 className="card-title mb-4">Saved Recipes</h1>
-              <ul className="list-unstyled">
-                {recipes.map((recipe, index) => (
-                  <li key={index} className="mb-2">
-                    <div className="card" onClick={() => handleOpen(recipe)}>
-                      <div className="card-body d-flex justify-content-between align-items-center">
-                        <Typography variant="subtitle1" component="h2">
-                          {recipe.recipeName}
-                        </Typography>
-                        <StyledDeleteButton
-                          onClick={(event) => {
-                            handleDelete(event, index);
-                          }}
-                          startIcon={<DeleteIcon />}
-                        />
+              {recipes.length > 0 ? (
+                <ul className="list-unstyled">
+                  {recipes.map((recipe, index) => (
+                    <li key={index} className="mb-2">
+                      <div className="card" onClick={() => handleOpen(recipe)}>
+                        <div className="card-body d-flex justify-content-between align-items-center">
+                          <Typography variant="subtitle1" component="h2">
+                            {recipe.recipeName}
+                          </Typography>
+                          <StyledDeleteButton
+                            onClick={(event) => {
+                              handleDelete(event, index);
+                            }}
+                            startIcon={<DeleteIcon />}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <>
+                  <hr />
+                  <Typography
+                    variant="subtitle1"
+                    component="div"
+                    id="no-recipe-display"
+                  >
+                    No recipes available
+                  </Typography>
+                  <hr />
+                </>
+              )}
 
-                {selectedRecipe && (
-                  <Modal open={open} onClose={handleClose}>
-                    <Box sx={modalStyle}>
-                      <Typography
-                        className="modalTitle"
-                        variant="h6"
-                        component="h2"
-                      >
-                        {selectedRecipe?.recipeName}
-                      </Typography>
-                      <Typography className="modalContent" sx={{ mt: 2 }}>
-                        <strong>Ingredients:</strong>
-                        <ul>
-                          {selectedRecipe?.ingredients
-                            .split(/,\s|\n/)
-                            .map((ingredient, index) => {
-                              if (ingredient) {
-                                return (
-                                  <li key={index}>
-                                    {ingredient.trim()}
-                                  </li>
-                                );
-                              }
-                              return null;
-                            })}
-                        </ul>
-                        <strong>Directions:</strong>
-                        <ol>
-                          {selectedRecipe?.directions
-                            .split(/\. |\n/)
-                            .map((direction, index) => {
-                              if (direction) {
-                                return (
-                                  <li key={index}>
-                                    {direction.trim()}
-                                  </li>
-                                );
-                              }
-                              return null;
-                            })}
-                        </ol>
-                      </Typography>
-                      <Button
-                        onClick={handleClose}
-                        id="closeButton"
-                      >
-                        <CloseIcon />
-                      </Button>
-                    </Box>
-                  </Modal>
-                )}
-              </ul>
+              {selectedRecipe && (
+                <Modal open={open} onClose={handleClose}>
+                  <Box sx={modalStyle}>
+                    <Typography
+                      className="modalTitle"
+                      variant="h6"
+                      component="h2"
+                    >
+                      {selectedRecipe?.recipeName}
+                    </Typography>
+                    <Typography className="modalContent" sx={{ mt: 2 }}>
+                      <strong>Ingredients:</strong>
+                      <ul>
+                        {selectedRecipe?.ingredients
+                          .split(/,\s|\n/)
+                          .map((ingredient, index) => {
+                            if (ingredient) {
+                              return <li key={index}>{ingredient.trim()}</li>;
+                            }
+                            return null;
+                          })}
+                      </ul>
+                      <strong>Directions:</strong>
+                      <ol>
+                        {selectedRecipe?.directions
+                          .split(/\. |\n/)
+                          .map((direction, index) => {
+                            if (direction) {
+                              return <li key={index}>{direction.trim()}</li>;
+                            }
+                            return null;
+                          })}
+                      </ol>
+                    </Typography>
+                    <Button onClick={handleClose} id="closeButton">
+                      <CloseIcon />
+                    </Button>
+                  </Box>
+                </Modal>
+              )}
             </div>
           </div>
         </div>
