@@ -21,3 +21,8 @@ The Recipe App is a delightful web application designed for culinary enthusiasts
 ## Getting Started
 
 To get started with the Recipe App, clone the repository to your local machine:
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
