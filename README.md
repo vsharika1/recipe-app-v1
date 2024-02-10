@@ -25,4 +25,22 @@ To get started with the Recipe App, clone the repository to your local machine:
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/vsharika1/recipe-app-v1.git
+```
+
+2. Navigate into the app's directory:
+```bash
+cd recipe-app
+```
+
+3. Install the necessary dependencies:
+```bash
+npm install
+```
+
+4. Once the dependencies are installed, you can start the application by running:
+```bash
+npm start
+```
+
+The app will launch in your default web browser, ready for you to explore and start adding your recipes!
